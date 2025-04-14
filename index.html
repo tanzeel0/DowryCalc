@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dahej Analysis Tool</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="./script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Dahej Expectation Analysis Tool</h1>
+            <p>This tool analyzes patterns in dowry expectations based on socioeconomic factors
+                <span style="color: #dc2626; font-weight: bold;"> (Note: Dowry is illegal in many countries including India)</span>
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grid grid-2-1">
+            <!-- Input Form -->
+            <div class="card">
+                <h2>Enter Details</h2>
+                <div id="error-container"></div>
+                
+                <form id="prediction-form">
+                    <div class="form-group">
+                        <label for="income">Monthly Income (INR)</label>
+                        <input 
+                            type="number" 
+                            id="income" 
+                            name="income" 
+                            value="80000" 
+                            min="10000" 
+                            max="200000" 
+                            required
+                        >
+                        <input 
+                            type="range" 
+                            id="income-range" 
+                            value="80000" 
+                            min="10000" 
+                            max="200000" 
+                            step="5000"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profession">Profession</label>
+                        <select id="profession" name="profession" required>
+                            <option value="Businessman">Businessman</option>
+                            <option value="CA">CA</option>
+                            <option value="Doctor">Doctor</option>
+                            <option value="Engineer" selected>Engineer</option>
+                            <option value="Lawyer">Lawyer</option>
+                            <option value="Teacher">Teacher</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="employmentType">Employment Type</label>
+                        <select id="employmentType" name="employmentType" required>
+                            <option value="Private" selected>Private</option>
+                            <option value="Government">Government</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="land">Land Owned (acres)</label>
+                        <select id="land" name="land" required>
+                            <option value="0">0</option>
+                            <option value="2" selected>2</option>
+                            <option value="4">4</option>
+                            <option value="6">6</option>
+                            <option value="8">8</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" id="submit-btn">Analyze Data</button>
+                </form>
+            </div>
+            
+            <!-- Results Panel -->
+            <div class="card">
+                <h2>Analysis Results</h2>
+                
+                <div id="results-container">
+                    <div class="loading" id="loading-message" style="display: none;">
+                        Analyzing data, please wait...
+                    </div>
+                    
+                    <div id="no-results-message" style="text-align: center; padding: 2rem; color: #6b7280;">
+                        Enter your details and click "Analyze Data" to see the results
+                    </div>
+                    
+                    <div id="prediction-results" style="display: none;">
+                        <div class="result-box">
+                            <h3>Predicted Expectation</h3>
+                            <p class="result-value" id="prediction-value">₹0</p>
+                            <p style="color: #6b7280; font-size: 0.875rem;">Based on the provided information</p>
+                        </div>
+                        
+                        <div class="factors-grid">
+                            <div class="factor-card">
+                                <h4>Income Factor</h4>
+                                <p id="income-factor">₹0</p>
+                            </div>
+                            <div class="factor-card">
+                                <h4>Profession Impact</h4>
+                                <p id="profession-impact">Unknown impact</p>
+                            </div>
+                            <div class="factor-card">
+                                <h4>Employment Impact</h4>
+                                <p id="employment-impact">Unknown impact</p>
+                            </div>
+                            <div class="factor-card">
+                                <h4>Land Ownership Impact</h4>
+                                <p id="land-impact">Unknown impact</p>
+                            </div>
+                        </div>
+                        
+                        <div class="notice">
+                            <h4 style="color: #92400e;">Important Note</h4>
+                            <p style="font-size: 0.875rem;">
+                                This analysis is based on pattern recognition from the uploaded graph data.
+                                Dowry practices are illegal in many countries including India under the Dowry Prohibition Act.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Disclaimer -->
+        <div class="disclaimer">
+            <h2>Important Disclaimer</h2>
+            <p>
+                This tool analyzes patterns in dowry (dahej) expectations based solely on the uploaded graph data.
+                It is intended for academic research and social awareness purposes only.
+            </p>
+            <p style="font-weight: bold;">
+                Dowry is illegal in India under the Dowry Prohibition Act, 1961, and asking for or giving dowry
+                is a punishable offense. This tool does not endorse or encourage dowry practices in any way.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
